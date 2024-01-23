@@ -1,16 +1,69 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+  //tambahan script untuk menggunakan komponen dari productdisplay
+      <div id="app">
+          <ProductDisplay />
+        </div>
+
+        <div id="app">
+      <div class="product-card">
+        <h2>Women section</h2>
+        <ProductCard :product="product" />
+        <ProductCard :product="product" />
+        <!-- Tambahkan lebih banyak ProductCard sesuai kebutuhan -->
+      </div>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//tambahan untuk import dari komponen productdisplay
+import ProductDisplay from './components/ProductDisplay.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    ProductDisplay
+  },
+  data() {
+    return {
+      products: [],
+      currentIndex: 0,
+      category: 'women clothing',
+    };
+  },
+  computed: {
+    pageClass() {
+      return {
+        'page-women': this.category === 'women clothing',
+        'page-men': this.category === 'men clothing',
+        'page-unavailable': this.category !== 'women clothing' && this.category !== 'men clothing',
+      };
+    },
+    filteredProducts() {
+      return this.products.filter((product, index) => index === this.currentIndex);
+    },
+    next() {
+      return this.currentIndex + 1 < this.products.length ? this.currentIndex + 1 : 0;
+    },
+    previous() {
+      return this.currentIndex - 1 >= 0 ? this.currentIndex - 1 : this.products.length - 1;
+    },
+  },
+  methods: {
+    async fetchProducts() {
+      try {
+        const response = await fetch('https://fakestoreapi.com/products');
+        this.products = await response.json();
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    },
+  },
+  mounted() {
+    this.fetchProducts();
+  },
 }
 </script>
 
