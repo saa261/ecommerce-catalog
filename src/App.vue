@@ -5,6 +5,18 @@
   //tambahan script untuk menggunakan komponen dari productdisplay
       <div id="app">
           <ProductDisplay />
+          <div> 
+            <h2>Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket</h2> 
+            <p>women's clothing</p> <p>Rating: 2.9/5</p> 
+            <p>Composition: 100 % POLYURETHANE (shell), 100 % POLYESTER (lining), 
+              75 % POLYESTER 25 % COTTON (sweater), faux leather material for style and comfort</p> 
+            <p>Features: 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, 
+              Button detail on waist, Detail stitching at sides</p> 
+            <p>Care instructions: HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON</p> 
+            <p>Price: $29.95</p> 
+            <button>Buy now</button> 
+          </div>
+
         </div>
 
         <div id="app">
